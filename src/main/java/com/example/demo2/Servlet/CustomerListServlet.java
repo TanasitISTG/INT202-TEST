@@ -13,14 +13,14 @@ import java.util.List;
 public class CustomerListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CustomerRepository customerRepository = new CustomerRepository();
-        List<Customer> customers = customerRepository.findAll();
-        request.setAttribute("customers", customers);
-        getServletContext().getRequestDispatcher("/customer-list.jsp").forward(request, response);
+        doPost(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        CustomerRepository customerRepository = new CustomerRepository();
+        List<Customer> customers = customerRepository.findAll();
+        request.setAttribute("customers", customers);
+        getServletContext().getRequestDispatcher("/customer-list.jsp").forward(request, response);
     }
 }
